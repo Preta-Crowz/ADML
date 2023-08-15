@@ -1,4 +1,4 @@
-import Prestige from "../Prestige"
+import Prestige from "../../Prestige"
 
 export default class prestigeReality {
     id = 'prestige';
