@@ -1,11 +1,3 @@
-window.PRESTIGE_EVENT = {
-  DIMENSION_BOOST: 0,
-  ANTIMATTER_GALAXY: 1,
-  INFINITY: 2,
-  ETERNITY: 3,
-  REALITY: 4,
-};
-
 function deepFreeze(obj) {
   Object.keys(obj).forEach(prop => {
     const reference = obj[prop];
