@@ -1,11 +1,7 @@
-import Prestige from "@mod/Prestige"
+import Prestige from "@mod/prestige";
 
 export default class prestigeEternity {
-    id = 'prestige';
-    name = 'Eternity'
-    after = ['infinity:prestige']
-
-    constructor(args...){
-        super(args);
-    }
+    id = "prestige";
+    name = "Eternity"
+    after = ["infinity:prestige"]
 }

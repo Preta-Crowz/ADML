@@ -1,10 +1,6 @@
-import Prestige from "@mod/Prestige"
+import Prestige from "@mod/prestige";
 
-export default class dimensionBoost {
-    id = 'boost';
-    name = 'Dimension Boost'
-
-    constructor(args...){
-        super(args);
-    }
+export default class dimensionBoost extends Prestige {
+    id = "boost";
+    name = "Dimension Boost"
 }

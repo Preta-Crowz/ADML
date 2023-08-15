@@ -1,11 +1,10 @@
 export default class Module {
-    id = '';
+    id = "";
+    name = "";
+    before = [];
+    after = [];
 
-    constructor() {}
+    constructor() { /* wip */ }
 
-    register() {}
+    register() { /* wip */ }
 }
-
-
-
-window.Module = Module; // to use on global scope
