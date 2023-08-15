@@ -1,8 +1,8 @@
 import Module from "@mod/module";
 
 import * as ad from "./antimatter-dimension";
-import antimatterGalaxy from "./antimatter-galaxy";
-import dimensionBoost from "./dimension-boost";
+import boost from "./boost";
+import galaxy from "./galaxy";
 
 export default class Antimatters extends Module {
   id = "antimatter";
