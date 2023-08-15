@@ -1,8 +1,8 @@
-import { GameMechanicState } from "../game-mechanics";
+import { GameMechanicState } from "@core/game-mechanics";
 
 import { SteamRuntime } from "@/steam";
 
-class AchievementState extends GameMechanicState {
+class Achievement extends GameMechanicState {
   constructor(config) {
     super(config);
     this._row = Math.floor(this.id / 10);
@@ -88,7 +88,7 @@ class AchievementState extends GameMechanicState {
  * @param {number} id
  * @returns {AchievementState}
  */
-export const Achievement = AchievementState.createAccessor(GameDatabase.achievements.normal);
+// export const Achievement = AchievementState.createAccessor(GameDatabase.achievements.normal);
 
 export const Achievements = {
   /**

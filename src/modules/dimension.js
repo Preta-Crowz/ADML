@@ -53,4 +53,21 @@ export default class Dimension {
     accessor.index = index;
     return accessor;
   }
+
+  defaultCommonMultiplier = DC.D1;
+
+  commonMultiplers = [];
+  commonDividers = [];
+
+  // To do : rework effects and convert it
+  get commonMultipler() {
+    let multipler = defaultCommonMultiplier;
+    for (const v of commonMultiplers) {
+      multipler = multipler.mult(v);
+    }
+    for (const v of commonDividers) {
+      multipler = multipler.div(v);
+    }
+    return multipler;
+  }
 }

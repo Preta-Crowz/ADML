@@ -1,22 +1,7 @@
 window.PRESTIGE_EVENT = {};
 window.PRESTIGE_PRIORITY = [];
 
-export default class Prestige {
-  id = "";
-  name = "";
-  before = [];
-  after = [];
-
-  static self;
-
-  constructor(from) {
-    if (this.constructor.self) return this.constructor.self;
-    this.from = from;
-    // This will final id, with namespace
-    this.id = `${from.id}:${this.id}`;
-    this.constructor.self = this;
-  }
-
+export default class Prestige extends NamedObject {
   register() {
     let fin = -1;
     for (const k of this.before) {

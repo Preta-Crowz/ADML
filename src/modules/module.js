@@ -1,10 +1,2 @@
-export default class Module {
-    id = "";
-    name = "";
-    before = [];
-    after = [];
-
-    constructor() { /* wip */ }
-
-    register() { /* wip */ }
+export default class Module extends NamedObject {
 }

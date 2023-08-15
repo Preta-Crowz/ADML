@@ -1,5 +1,8 @@
-export class Effect {
+import NamedObject from "@mod/NamedObject";
+
+export class Effect extends NamedObject {
   constructor(effect, cap, condition) {
+    super();
     if (effect === undefined || this.isCustomEffect) {
       return;
     }
