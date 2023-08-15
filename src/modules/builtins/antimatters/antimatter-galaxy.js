@@ -1,4 +1,4 @@
-import Prestige from "@mod/restige";
+import Prestige from "@mod/prestige";
 
 export default class antimatterGalaxy extends Prestige {
   id = "galaxy";
