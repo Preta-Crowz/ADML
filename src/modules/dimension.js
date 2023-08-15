@@ -1,4 +1,4 @@
-export class DimensionState {
+export default class Dimension {
   constructor(getData, tier) {
     this._tier = tier;
     this._getData = getData;
