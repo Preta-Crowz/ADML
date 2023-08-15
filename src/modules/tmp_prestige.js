@@ -42,7 +42,7 @@ export default class Prestige {
         Prestige.updatePrestige();
     }
 
-    static updatePrestige() {
+    static updatePrestige() { // update PRESTIGE_EVENT like vanilla one
         window.PRESTIGE_EVENT = {};
         for (let i in window.PRESTIGE_PRIORITY) {
             window.PRESTIGE_EVENT[window.PRESTIGE_PRIORITY[i]] = +i;
