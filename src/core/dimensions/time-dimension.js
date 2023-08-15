@@ -1,6 +1,6 @@
 import { DC } from "../constants";
 
-import { DimensionState } from "./dimension";
+import { DimensionState } from "../../module/dimension";
 
 export function buySingleTimeDimension(tier, auto = false) {
   const dim = TimeDimension(tier);

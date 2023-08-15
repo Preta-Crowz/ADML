@@ -1,6 +1,6 @@
 import { DC } from "../constants";
 
-import { DimensionState } from "./dimension";
+import { DimensionState } from "../../module/dimension";
 
 export function infinityDimensionCommonMultiplier() {
   let mult = new Decimal(ShopPurchase.allDimPurchases.currentMult)

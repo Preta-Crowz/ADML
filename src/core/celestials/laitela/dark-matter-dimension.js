@@ -1,5 +1,5 @@
 import { DC } from "../../constants";
-import { DimensionState } from "../../dimensions/dimension";
+import { DimensionState } from "../../../modules/dimension";
 
 /**
  * Constants for easily adjusting values
