@@ -19,7 +19,9 @@
     "import/resolver": {
       "alias": {
         "map": [
-          ["@", "./src"]
+          ["@", "./src"],
+          ["@core", "./src/core"],
+          ["@mod", "./src/modules"]
         ],
         "extensions": [".js", ".vue"]
       }
@@ -45,7 +47,7 @@
       "warn",
       {
         "newlines-between": "always-and-inside-groups",
-        "pathGroups": [{ "pattern": "@/**", "group": "sibling" }]
+        "pathGroups": [{ "pattern": "@*/**", "group": "sibling" }]
       }
     ],
     "sort-imports": [

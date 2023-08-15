@@ -1,6 +1,6 @@
-import { DC } from "../constants";
+import { DC } from "@core/constants";
 
-import Dimension from "../../dimension";
+import Dimension from "@mod/dimension";
 
 // Multiplier applied to all Antimatter Dimensions, regardless of tier. This is cached using a Lazy
 // and invalidated every update.
