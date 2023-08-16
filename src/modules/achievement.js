@@ -2,7 +2,54 @@ import { GameMechanicState } from "@core/game-mechanics";
 
 import { SteamRuntime } from "@/steam";
 
-class Achievement extends GameMechanicState {
+class Achievement extends NamedObject {
+  id = "";
+  name = "";
+
+  get isVisisble() {
+    return true;
+  }
+
+  get isUnlocked() {
+    return this.from.player.achievements[this.internal];
+  }
+
+  get isDisabled() {
+    return false;
+  }
+
+  get isAchived() {
+    return this.from.player.achievementsPermenent[this.internal];
+  }
+
+  get isEffectActive() {
+    return this.isUnlocked && !this.isDisabled;
+  }
+
+  checkRequirement() {
+    return false;
+  }
+
+  unlock(auto, force) {
+    if (!auto && !force && !this.checkRequirement()) return;
+    this.from.player.achievements[this.internal] = true;
+
+    if (!this.isAchived) {
+      this.from.player.achievementsPermenent[this.internal] = true;
+      this.onAchieve();
+    }
+  }
+
+  lock() {
+    this.from.player.achievements[this.internal] = false;
+  }
+
+  // This is placeholder to override.
+  // eslint-disable-next-line no-empty-function
+  onAchive() {}
+}
+
+class _Achievement extends GameMechanicState {
   constructor(config) {
     super(config);
     this._row = Math.floor(this.id / 10);

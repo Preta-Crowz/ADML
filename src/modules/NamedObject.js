@@ -10,6 +10,7 @@ export default class NamedObject {
     if (this.constructor.self) return this.constructor.self;
     this.from = from || this;
     // This will final id, with namespace
+    this.internal = this.id;
     this.id = `${from.id}:${this.id}`;
     this.constructor.self = this;
   }
