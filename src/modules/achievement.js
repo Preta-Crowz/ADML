@@ -2,9 +2,15 @@ import { GameMechanicState } from "@core/game-mechanics";
 
 import { SteamRuntime } from "@/steam";
 
-class Achievement extends NamedObject {
+export default class Achievement extends NamedObject {
   id = "";
   name = "";
+  triggeredFrom = "tick";
+
+  constructor(from) {
+    super(from);
+    this.from.achievements[this.internal] = this;
+  }
 
   get isVisisble() {
     return true;
@@ -46,7 +52,7 @@ class Achievement extends NamedObject {
 
   // This is placeholder to override.
   // eslint-disable-next-line no-empty-function
-  onAchive() {}
+  onAchieve() {}
 }
 
 class _Achievement extends GameMechanicState {

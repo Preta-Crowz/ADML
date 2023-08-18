@@ -9,7 +9,8 @@ module.exports = {
         "alias": {
           "@": "./src",
           "@core": "./src/core",
-          "@mod": "./src/modules"
+          "@mod": "./src/modules",
+          "@builtins": "./src/modules/builtins"
         }
       }
     ]
