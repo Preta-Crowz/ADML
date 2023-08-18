@@ -11,7 +11,7 @@ export default class Module extends NamedObject {
     player = new PlayerData(this);
     for (const c of contents) {
       // eslint-disable-next-line no-new
-      new c();
+      new c(this);
     }
   }
 }

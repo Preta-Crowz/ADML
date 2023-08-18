@@ -6,7 +6,7 @@ export default class AchievementGroup extends NamedObject {
   constructor(from) {
     super(from);
     for (const i in this.achievements) {
-      this.achievements[i] = new this.achievements[i]();
+      this.achievements[i] = new this.achievements[i](from);
     }
     this.from.achievementGroups[this.internal] = this;
   }
