@@ -2,62 +2,6 @@ import { DC } from "../../constants";
 
 export const normalAchievements = [
   {
-    id: 11,
-    name: "You gotta start somewhere",
-    description: "Buy a 1st Antimatter Dimension.",
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-  },
-  {
-    id: 12,
-    name: "100 antimatter is a lot",
-    description: "Buy a 2nd Antimatter Dimension.",
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-  },
-  {
-    id: 13,
-    name: "Half life 3 CONFIRMED",
-    description: "Buy a 3rd Antimatter Dimension.",
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-  },
-  {
-    id: 14,
-    name: "L4D: Left 4 Dimensions",
-    description: "Buy a 4th Antimatter Dimension.",
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-  },
-  {
-    id: 15,
-    name: "5 Dimension Antimatter Punch",
-    description: "Buy a 5th Antimatter Dimension.",
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-  },
-  {
-    id: 16,
-    name: "We couldn't afford 9",
-    get description() {
-      return Enslaved.isRunning
-        ? "Buy a 6th Antimatter Dimension (they never amount to anything)"
-        : "Buy a 6th Antimatter Dimension.";
-    },
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-  },
-  {
-    id: 17,
-    name: "Not a luck related achievement",
-    description: "Buy a 7th Antimatter Dimension.",
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-  },
-  {
-    id: 18,
-    name: "90 degrees to infinity",
-    get description() {
-      return Enslaved.isRunning
-        ? "Buy an 8th Antimatter Dimension (don't get used to it)"
-        : "Buy an 8th Antimatter Dimension.";
-    },
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-  },
-  {
     id: 21,
     name: "To infinity!",
     description: "Go Infinite.",
