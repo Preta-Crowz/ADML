@@ -6,8 +6,9 @@ export class Achievement11 extends Achievement {
   description = "Buy a 1st Antimatter Dimension.";
   triggeredFrom = "buy";
 
-  checkRequirement() {
-    return this.from.player.dimensions.dimensions[0].bought > 0;
+  checkRequirement(event) {
+    if (event.type != "antimatter:dimensions") return false;
+    return event.tier == 1;
   }
 }
 
@@ -17,8 +18,9 @@ export class Achievement12 extends Achievement {
   description = "Buy a 2nd Antimatter Dimension.";
   triggeredFrom = "buy";
 
-  checkRequirement() {
-    return this.from.player.dimensions.dimensions[1].bought > 0;
+  checkRequirement(event) {
+    if (event.type != "antimatter:dimensions") return false;
+    return event.tier == 2;
   }
 }
 
@@ -28,8 +30,9 @@ export class Achievement13 extends Achievement {
   description = "Buy a 3rd Antimatter Dimension.";
   triggeredFrom = "buy";
 
-  checkRequirement() {
-    return this.from.player.dimensions.dimensions[2].bought > 0;
+  checkRequirement(event) {
+    if (event.type != "antimatter:dimensions") return false;
+    return event.tier == 3;
   }
 }
 
@@ -39,8 +42,9 @@ export class Achievement14 extends Achievement {
   description = "Buy a 4th Antimatter Dimension.";
   triggeredFrom = "buy";
 
-  checkRequirement() {
-    return this.from.player.dimensions.dimensions[3].bought > 0;
+  checkRequirement(event) {
+    if (event.type != "antimatter:dimensions") return false;
+    return event.tier == 4;
   }
 }
 
@@ -50,15 +54,16 @@ export class Achievement15 extends Achievement {
   description = "Buy a 5th Antimatter Dimension.";
   triggeredFrom = "buy";
 
-  checkRequirement() {
-    return this.from.player.dimensions.dimensions[4].bought > 0;
+  checkRequirement(event) {
+    if (event.type != "antimatter:dimensions") return false;
+    return event.tier == 5;
   }
 }
 
 export class Achievement16 extends Achievement {
   id = "achievement16";
   name = "We couldn't afford 9";
-  get description() {
+  get description(event) {
     if (ModManager.isLoaded("enslaved") && GlobalState.isRunning("enslaved:challenge")) {
       return "Buy a 6th Antimatter Dimension (they never amount to anything)";
     }
@@ -67,8 +72,9 @@ export class Achievement16 extends Achievement {
 
   triggeredFrom = "buy";
 
-  checkRequirement() {
-    return this.from.player.dimensions.dimensions[5].bought > 0;
+  checkRequirement(event) {
+    if (event.type != "antimatter:dimensions") return false;
+    return event.tier == 6;
   }
 }
 
@@ -78,8 +84,9 @@ export class Achievement17 extends Achievement {
   description = "Buy a 7th Antimatter Dimension.";
   triggeredFrom = "buy";
 
-  checkRequirement() {
-    return this.from.player.dimensions.dimensions[6].bought > 0;
+  checkRequirement(event) {
+    if (event.type != "antimatter:dimensions") return false;
+    return event.tier == 7;
   }
 }
 
@@ -95,7 +102,8 @@ export class Achievement18 extends Achievement {
 
   triggeredFrom = "buy";
 
-  checkRequirement() {
-    return this.from.player.dimensions.dimensions[7].bought > 0;
+  checkRequirement(event) {
+    if (event.type != "antimatter:dimensions") return false;
+    return event.tier == 8;
   }
 }
