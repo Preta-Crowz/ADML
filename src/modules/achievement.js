@@ -5,6 +5,8 @@ import { SteamRuntime } from "@/steam";
 export default class Achievement extends NamedObject {
   id = "";
   name = "";
+  description = "";
+  reward = "";
   triggeredFrom = "tick";
 
   constructor(from) {

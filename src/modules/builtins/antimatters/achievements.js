@@ -7,8 +7,8 @@ export class Achievement11 extends Achievement {
   triggeredFrom = "buy";
 
   checkRequirement(event) {
-    if (event.type != "antimatter:dimensions") return false;
-    return event.tier == 1;
+    if (event.type !== "antimatter:dimensions") return false;
+    return event.tier === 1;
   }
 }
 
@@ -19,8 +19,8 @@ export class Achievement12 extends Achievement {
   triggeredFrom = "buy";
 
   checkRequirement(event) {
-    if (event.type != "antimatter:dimensions") return false;
-    return event.tier == 2;
+    if (event.type !== "antimatter:dimensions") return false;
+    return event.tier === 2;
   }
 }
 
@@ -31,8 +31,8 @@ export class Achievement13 extends Achievement {
   triggeredFrom = "buy";
 
   checkRequirement(event) {
-    if (event.type != "antimatter:dimensions") return false;
-    return event.tier == 3;
+    if (event.type !== "antimatter:dimensions") return false;
+    return event.tier === 3;
   }
 }
 
@@ -43,8 +43,8 @@ export class Achievement14 extends Achievement {
   triggeredFrom = "buy";
 
   checkRequirement(event) {
-    if (event.type != "antimatter:dimensions") return false;
-    return event.tier == 4;
+    if (event.type !== "antimatter:dimensions") return false;
+    return event.tier === 4;
   }
 }
 
@@ -55,15 +55,15 @@ export class Achievement15 extends Achievement {
   triggeredFrom = "buy";
 
   checkRequirement(event) {
-    if (event.type != "antimatter:dimensions") return false;
-    return event.tier == 5;
+    if (event.type !== "antimatter:dimensions") return false;
+    return event.tier === 5;
   }
 }
 
 export class Achievement16 extends Achievement {
   id = "achievement16";
   name = "We couldn't afford 9";
-  get description(event) {
+  get description() {
     if (ModManager.isLoaded("enslaved") && GlobalState.isRunning("enslaved:challenge")) {
       return "Buy a 6th Antimatter Dimension (they never amount to anything)";
     }
@@ -73,8 +73,8 @@ export class Achievement16 extends Achievement {
   triggeredFrom = "buy";
 
   checkRequirement(event) {
-    if (event.type != "antimatter:dimensions") return false;
-    return event.tier == 6;
+    if (event.type !== "antimatter:dimensions") return false;
+    return event.tier === 6;
   }
 }
 
@@ -85,8 +85,8 @@ export class Achievement17 extends Achievement {
   triggeredFrom = "buy";
 
   checkRequirement(event) {
-    if (event.type != "antimatter:dimensions") return false;
-    return event.tier == 7;
+    if (event.type !== "antimatter:dimensions") return false;
+    return event.tier === 7;
   }
 }
 
@@ -103,7 +103,7 @@ export class Achievement18 extends Achievement {
   triggeredFrom = "buy";
 
   checkRequirement(event) {
-    if (event.type != "antimatter:dimensions") return false;
-    return event.tier == 8;
+    if (event.type !== "antimatter:dimensions") return false;
+    return event.tier === 8;
   }
 }
