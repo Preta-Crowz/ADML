@@ -1,12 +1,12 @@
 export default class NamedObject {
   id = "";
   name = "";
-  before = [];
-  after = [];
+  before: string[] = [];
+  after: string[] = [];
 
-  static self;
+  static self:NamedObject;
 
-  constructor(from) {
+  constructor(from: NamedObject?) {
     if (this.constructor.self) return this.constructor.self;
     this.from = from || this;
     // This will original id which is configurated, I'm too lazy to rename this

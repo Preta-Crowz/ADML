@@ -1,12 +1,17 @@
-class FunctionExtendable {
-  before = [];
-  after = [];
+/* eslint @typescript-eslint/no-explicit-any: 0 */
 
-  body() {
+type FunctionBefore = (...args) => any;
+type FunctionAfter<T> = (...args, Rvalue :T) => T;
+
+export default class FunctionExtendable<T> {
+  before: FunctionBefore[] = [];
+  after: FunctionAfter<T>[] = [];
+
+  body(...args): T {
     throw new window.NotImplementedError();
   }
 
-  call(namespace, ...realArgs) {
+  call(namespace, ...realArgs):T {
     let args = [...realArgs];
     for (const f of before) {
       // "before" functions changes arguments, or just run other codes without return
@@ -20,6 +25,11 @@ class FunctionExtendable {
     }
   }
 
-  addBefore = f => before.push(f);
-  addAfter = f => after.push(f);
+  addBefore(f: FunctionBefore) {
+    before.push(f);
+  }
+
+  addAfter(f: FunctionAfter<T>) {
+    after.push(f);
+  }
 }

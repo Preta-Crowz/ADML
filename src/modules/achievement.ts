@@ -2,12 +2,14 @@ import { GameMechanicState } from "@core/game-mechanics";
 
 import { SteamRuntime } from "@/steam";
 
+type Triggers = "tick" | "buy" | "prestige";
+
 export default class Achievement extends NamedObject {
   id = "";
   name = "";
   description = "";
   reward = "";
-  triggeredFrom = "tick";
+  triggeredFrom:Triggers = "tick";
 
   constructor(from) {
     super(from);
