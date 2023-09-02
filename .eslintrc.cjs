@@ -1,8 +1,11 @@
-{
+require("@rushstack/eslint-patch/modern-module-resolution")
+
+module.exports = {
   "extends": [
     "eslint:recommended",
     "plugin:import/recommended",
-    "plugin:vue/recommended"
+    "plugin:vue/recommended",
+    "@vue/eslint-config-typescript/recommended"
   ],
   "env": {
     "es6": true,
@@ -13,7 +16,7 @@
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module",
-    "parser": "@babel/eslint-parser"
+    "parser": "@typescript-eslint/parser"
   },
   "settings": {
     "import/resolver": {
@@ -88,6 +91,7 @@
     "vue/no-multiple-objects-in-class": "warn",
     "vue/no-static-inline-styles": "warn",
     "vue/no-v-html": "off",
+    "@typescript-eslint/no-empty-function": "off",
     "no-empty-function": "error",
     "no-eval": "error",
     "no-extra-bind": "error",
