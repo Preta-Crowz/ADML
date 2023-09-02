@@ -16,7 +16,7 @@ class FunctionExtendable {
     let r = this.body.call(namespace, ...args);
     for (const f of after) {
       // "after" functions changes returns, or just run other codes without return
-      r = f.call(namespace, ...args) || r;
+      r = f.call(namespace, r, ...args) || r;
     }
   }
 

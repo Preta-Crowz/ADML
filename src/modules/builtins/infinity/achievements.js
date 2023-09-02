@@ -94,54 +94,121 @@ export class Achievement25 extends Achievement {
   }
 }
 
+export class Achievement26 extends Achievement {
+  id = "achievement26";
+  name = "You got past The Big Wall";
+  description = "Buy an Antimatter Galaxy.";
+
+  triggeredFrom = "prestige";
+
+  checkRequirement(event) {
+    return event.type === "antimatter:galaxy";
+  }
+}
+
+export class Achievement27 extends Achievement {
+  id = "achievement27";
+  name = "Double Galaxy";
+  get description() {
+    return `Buy ${formatInt(2)} Antimatter Galaxies.`;
+  }
+
+  triggeredFrom = "prestige";
+
+  checkRequirement(event) {
+    if (event.type !== "antimatter:galaxy") return false;
+    return ModManager.getPlayer("antimatter").galaxies >= 2;
+  }
+}
+
+export class Achievement28 extends Achievement {
+  id = "achievement28";
+  name = "There's no point in doing that...";
+  get description() {
+    return `Buy a single 1st Antimatter Dimension when you have over ${format(DC.E150)} of them.`;
+  }
+
+  get reward() {
+    return `1st Antimatter Dimensions are ${formatPercents(0.1)} stronger.`;
+  }
+
+  triggeredFrom = "buy";
+
+  checkRequirement(event) {
+    if (event.type !== "antimatter:dimensions" || event.tier !== 1) return false;
+    if (ModManager.getObject("antimatter:dimensions").tier(1).getAmount().exponent < 150) return false;
+    return event.isSingle;
+  }
+
+  constructor(from) {
+    super(from);
+    ModManager.getObject("antimatter:dimensions").getMultipliers.addAfter((r, args) => {
+      if (!ModManager.getAchivement("infinity:achievement28").isEffectActive()) return null;
+      if (args[0] !== 1) return null;
+      return r * 1.1;
+    });
+  }
+}
+
+export class Achievement31 extends Achievement {
+  id = "achievement31";
+  name = "I forgot to nerf that";
+  get description() {
+    return `Get any Antimatter Dimension multiplier over ${formatX(DC.E31)}.`;
+  }
+
+  get reward() {
+    return `1st Antimatter Dimensions are ${formatPercents(0.05)} stronger.`;
+  }
+
+  triggeredFrom = "tick";
+
+  checkRequirement(event) {
+    if (event.type !== "antimatter") return false;
+    return ModManager.getObject("antimatter:dimensions").getAllMultipliers().some(x => x.multiplier.exponent >= 31);
+  }
+
+  constructor(from) {
+    super(from);
+    ModManager.getObject("antimatter:dimensions").getMultipliers.addAfter((r, args) => {
+      if (!ModManager.getAchivement("infinity:achievement31").isEffectActive()) return null;
+      if (args[0] !== 1) return null;
+      return r * 1.05;
+    });
+  }
+}
+
+export class Achievement32 extends Achievement {
+  id = "achievement32";
+  name = "The Gods are pleased";
+  get description() {
+    return `Get over ${formatX(600)} from Dimensional Sacrifice outside of Challenge 8.`;
+  }
+
+  get reward() {
+    return `Dimensional Sacrifice is stronger.
+    AD^x ➜
+    AD^(x+0.1)`;
+  }
+
+  triggeredFrom = "prestige";
+
+  checkRequirement(event) {
+    if (event.type !== "antimatter:sacrifice") return false;
+    if (GlobalState.isRunning("infinity:challenge8")) return false;
+    return ModManager.getObject("antimatter:sacrifice").getTotalBoost().gte(600);
+  }
+
+  constructor(from) {
+    super(from);
+    ModManager.getObject("antimatter:sacrifice").getBaseExponent.addAfter(r => {
+      if (!ModManager.getAchivement("infinity:achievement32").isEffectActive()) return null;
+      return r + 0.1;
+    });
+  }
+}
+
 [
-  {
-    id: 26,
-    name: "You got past The Big Wall",
-    description: "Buy an Antimatter Galaxy.",
-    checkRequirement: () => true,
-    checkEvent: GAME_EVENT.GALAXY_RESET_BEFORE
-  },
-  {
-    id: 27,
-    name: "Double Galaxy",
-    get description() { return `Buy ${formatInt(2)} Antimatter Galaxies.`; },
-    checkRequirement: () => player.galaxies >= 2,
-    checkEvent: GAME_EVENT.GALAXY_RESET_AFTER
-  },
-  {
-    id: 28,
-    name: "There's no point in doing that...",
-    get description() {
-      return `Buy a single 1st Antimatter Dimension when you have over ${format(DC.E150)} of them.`;
-    },
-    checkRequirement: () => AntimatterDimension(1).amount.exponent >= 150,
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-    get reward() { return `1st Antimatter Dimensions are ${formatPercents(0.1)} stronger.`; },
-    effect: 1.1
-  },
-  {
-    id: 31,
-    name: "I forgot to nerf that",
-    get description() { return `Get any Antimatter Dimension multiplier over ${formatX(DC.E31)}.`; },
-    checkRequirement: () => AntimatterDimensions.all.some(x => x.multiplier.exponent >= 31),
-    checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    get reward() { return `1st Antimatter Dimensions are ${formatPercents(0.05)} stronger.`; },
-    effect: 1.05
-  },
-  {
-    id: 32,
-    name: "The Gods are pleased",
-    get description() { return `Get over ${formatX(600)} from Dimensional Sacrifice outside of Challenge 8.`; },
-    checkRequirement: () => !NormalChallenge(8).isOnlyActiveChallenge && Sacrifice.totalBoost.gte(600),
-    checkEvent: GAME_EVENT.SACRIFICE_RESET_AFTER,
-    get reward() {
-      return `Dimensional Sacrifice is stronger.
-      ${Sacrifice.getSacrificeDescription({ "Achievement32": false, "Achievement57": false, "Achievement88": false })} ➜
-      ${Sacrifice.getSacrificeDescription({ "Achievement32": true, "Achievement57": false, "Achievement88": false })}`;
-    },
-    effect: 0.1,
-  },
   {
     id: 33,
     name: "That's a lot of infinites",
