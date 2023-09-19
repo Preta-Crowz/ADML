@@ -6,7 +6,7 @@ export class Achievement21 extends Achievement {
   description = "Go Infinite.";
   get reward() {
     return `Start with ${formatInt(100)} antimatter.`;
-  };
+  }
 
   triggeredFrom = "prestige";
 
@@ -14,8 +14,8 @@ export class Achievement21 extends Achievement {
     return event.type === "infinity:prestige";
   }
 
-  constructor(from) {
-    super(from);
+  register() {
+    super();
     ModManager.getObject("antimatter:antimatter").setDefaultPlayer.addAfter(r => {
       if (!ModManager.getAchivement("infinity:achievement21").isEffectActive()) return null;
       if (r.antimatters < 100) r.antimatters = 100;
@@ -56,8 +56,8 @@ export class Achievement23 extends Achievement {
     return ModManager.getObject("antimatter:dimensions").tier(8).getAmount().eq(99);
   }
 
-  constructor(from) {
-    super(from);
+  register() {
+    super();
     ModManager.getObject("antimatter:dimensions").tier(8).getMultiplier.addAfter(r => {
       if (!ModManager.getAchivement("infinity:achievement23").isEffectActive()) return null;
       return r * 1.1;
@@ -140,8 +140,8 @@ export class Achievement28 extends Achievement {
     return event.isSingle;
   }
 
-  constructor(from) {
-    super(from);
+  register() {
+    super();
     ModManager.getObject("antimatter:dimensions").getMultipliers.addAfter((r, args) => {
       if (!ModManager.getAchivement("infinity:achievement28").isEffectActive()) return null;
       if (args[0] !== 1) return null;
@@ -168,8 +168,8 @@ export class Achievement31 extends Achievement {
     return ModManager.getObject("antimatter:dimensions").getAllMultipliers().some(x => x.multiplier.exponent >= 31);
   }
 
-  constructor(from) {
-    super(from);
+  register() {
+    super();
     ModManager.getObject("antimatter:dimensions").getMultipliers.addAfter((r, args) => {
       if (!ModManager.getAchivement("infinity:achievement31").isEffectActive()) return null;
       if (args[0] !== 1) return null;
@@ -195,12 +195,12 @@ export class Achievement32 extends Achievement {
 
   checkRequirement(event) {
     if (event.type !== "antimatter:sacrifice") return false;
-    if (GlobalState.isRunning("infinity:challenge8")) return false;
+    if (ModManager.isRunning("infinity:challenge8")) return false;
     return ModManager.getObject("antimatter:sacrifice").getTotalBoost().gte(600);
   }
 
-  constructor(from) {
-    super(from);
+  register() {
+    super();
     ModManager.getObject("antimatter:sacrifice").getBaseExponent.addAfter(r => {
       if (!ModManager.getAchivement("infinity:achievement32").isEffectActive()) return null;
       return r + 0.1;
@@ -353,4 +353,4 @@ export class Achievement32 extends Achievement {
     get reward() { return `All Dimensions are ${formatPercents(0.1)} stronger.`; },
     effect: 1.1
   }
-]
+];

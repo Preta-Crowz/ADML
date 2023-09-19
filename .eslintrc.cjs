@@ -27,7 +27,7 @@ module.exports = {
           ["@mod", "./src/modules"],
           ["@builtins", "./src/modules/builtins"]
         ],
-        "extensions": [".js", ".vue"]
+        "extensions": [".js", ".vue", ".ts"]
       }
     }
   },

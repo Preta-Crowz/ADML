@@ -1,17 +1,19 @@
-import PlayerData from "@mod/playerdata";
+import AchievementGroup from "@mod/AchievementGroup";
+import PlayerData from "@mod/PlayerData";
 
 export default class Module extends NamedObject {
-  achievements = {};
-  achievementGroups = {};
-
-  contents = [];
+  achievementGroups: AchievementGroup[] = [];
+  contents: NamedObject[] = [];
 
   constructor() {
     super();
-    player = new PlayerData(this);
+    this.player = new PlayerData(this);
+  }
+
+  register() {
+    super();
     for (const c of contents) {
-      // eslint-disable-next-line no-new
-      new c(this);
+      c.register();
     }
   }
 }

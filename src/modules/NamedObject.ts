@@ -1,3 +1,5 @@
+import ModManager from "@mod/ModManager";
+
 export default class NamedObject {
   id = "";
   name = "";
@@ -14,5 +16,13 @@ export default class NamedObject {
     // This will final id, with namespace
     this.id = `${from.id}:${this.id}`;
     this.constructor.self = this;
+  }
+
+  register() {
+    ModManager.addObject(this.id, this);
+  }
+
+  getPlayer() {
+    return this.from.player;
   }
 }

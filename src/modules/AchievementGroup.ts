@@ -14,4 +14,9 @@ export default class AchievementGroup extends NamedObject {
   addAchievement(achievement: Achievement) {
     this.achievements.push(achievement);
   }
+
+  register() {
+    super();
+    this.achievements.map(v => v.register());
+  }
 }
