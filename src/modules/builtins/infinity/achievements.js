@@ -208,23 +208,48 @@ export class Achievement32 extends Achievement {
   }
 }
 
+export class Achievement33 extends Achievement {
+  id = "achievement33";
+  name = "That's a lot of infinites";
+  get description() {
+    return `Reach Infinity ${formatInt(10)} times.`;
+  }
+
+  triggeredFrom = "prestige";
+
+  checkRequirement(event) {
+    if (event.type !== "infinity:infinity") return false;
+    return ModManager.getPlayer("infinity").infinities.gte(10);
+  }
+}
+
+export class Achievement34 extends Achievement {
+  id = "achievement34";
+  name = "You didn't need it anyway";
+  description = "Infinity without having any 8th Antimatter Dimensions.";
+
+  get reward() {
+    return `Dimensions 1-7 are ${formatPercents(0.02)} stronger.`;
+  }
+
+  triggeredFrom = "prestige";
+
+  checkRequirement(event) {
+    if (event.type !== "infinity:infinity") return false;
+    return ModManager.getObject("antimatter:dimensions").tier(8).getAmount().eq(0);
+  }
+
+  register() {
+    super();
+    ModManager.getObject("antimatter:dimensions").getMultipliers.addAfter((r, args) => {
+      if (!ModManager.getAchivement("infinity:achievement33").isEffectActive()) return null;
+      if (args[0] === 8) return null;
+      return r * 1.02;
+    });
+  }
+}
+
 [
-  {
-    id: 33,
-    name: "That's a lot of infinites",
-    get description() { return `Reach Infinity ${formatInt(10)} times.`; },
-    checkRequirement: () => Currency.infinities.gte(10),
-    checkEvent: GAME_EVENT.BIG_CRUNCH_AFTER
-  },
-  {
-    id: 34,
-    name: "You didn't need it anyway",
-    description: "Infinity without having any 8th Antimatter Dimensions.",
-    checkRequirement: () => AntimatterDimension(8).totalAmount.eq(0),
-    checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
-    get reward() { return `Dimensions 1-7 are ${formatPercents(0.02)} stronger.`; },
-    effect: 1.02
-  },
   {
     id: 35,
     name: "Don't you dare sleep",
